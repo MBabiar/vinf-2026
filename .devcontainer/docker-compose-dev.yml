@@ -1,0 +1,12 @@
+name: vinf_devcon
+
+services:
+  vinf_devcon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace/vinf:cached
+    # init (tini) as PID 1 reaps exited background processes; `sleep infinity` alone leaves zombies
+    init: true
+    command: sleep infinity

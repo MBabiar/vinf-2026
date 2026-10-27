@@ -1,0 +1,54 @@
+# AI crawler restrictions - updated 2026-01-31
+# Block major AI training and scraping bots
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+# General rules for all other crawlers
+User-agent: *
+Disallow: /*?letter=*
+Disallow: /*?orderby=*
+Disallow: /*?asc=*
+Disallow: /*?since=*
+Disallow: /*&letter=*
+Disallow: /*&orderby=*
+Disallow: /*&asc=*
+Disallow: /*&since=*
+Disallow: /stats
+Disallow: /site/search
+Disallow: /series/advanced-search
+Disallow: /cp
+Disallow: /lists
+Disallow: /releases
+Disallow: /members
+Disallow: /signup
+Disallow: /convo
+Disallow: /account
+Disallow: /forum/*/-search
+Disallow: /forums/search
+Disallow: /topic/*/-search
+Disallow: /topic/*/-post
+Disallow: /series/*/-comment
+Disallow: /series/*/-rank
+Disallow: /series/*/-similar-interests

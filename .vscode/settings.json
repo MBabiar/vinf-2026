@@ -1,0 +1,11 @@
+{
+    "ty.configuration": {
+        "environment": {
+            "python": "/workspace/vinf/animanga/.venv",
+            "root": [
+                "/workspace/vinf/animanga/src",
+                "/workspace/vinf/animanga"
+            ]
+        }
+    }
+}

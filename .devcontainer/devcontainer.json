@@ -1,0 +1,36 @@
+{
+    "containerEnv": {
+        // Points to the host's workspace folder. Allows access to host files from within the devcontainer, enabling proper mounting of files when creating additional Docker containers when working in devcontainer. Without this, mounting any file would fail during execution of docker-compose/build/run commands inside the devcontainer as mounting requires the actual path on the host system (where the file is actually stored), not the path within the devcontainer where files are mounted.
+        "HOST_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
+    "dockerComposeFile": "docker-compose-dev.yml",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "service": "vinf_devcon",
+    "workspaceFolder": "/workspace/vinf",
+    // the repo is a bind mount owned by the host user; then create animanga/.venv with all dev tools
+    "postCreateCommand": "git config --global --add safe.directory /workspace/vinf && cd animanga && uv sync",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/workspace/vinf/animanga/.venv/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.testing.cwd": "/workspace/vinf/animanga",
+                "python.testing.pytestArgs": ["tests"],
+                // tens of thousands of crawled pages slow VS Code down
+                "files.watcherExclude": { "**/data/**": true, "**/data_*/**": true, "**/.venv/**": true },
+                "search.exclude": { "**/data/**": true, "**/data_*/**": true }
+            },
+            "extensions": [
+                "ms-python.vscode-pylance",
+                "njpwerner.autodocstring",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-python.vscode-python-envs",
+                "charliermarsh.ruff",
+                "astral-sh.ty"
+            ]
+        }
+    }
+}

@@ -1,0 +1,35 @@
+[project]
+name = "animanga"
+version = "0.1.0"
+description = "Anime (ANN) + manga (MangaUpdates) search engine: crawler, parser, index (VI 2026 project)"
+authors = [
+    { name = "Mário Babiar", email = "xbabiar@stuba.sk" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "requests>=2.34.2",
+    "tiktoken>=0.14.0",
+]
+
+[project.scripts]
+crawl = "animanga.crawler.entrypoint:main"
+watch = "animanga.crawler.entrypoint:watch_main"
+parse = "animanga.parser.run:main"
+docs = "animanga.docs.run:main"
+index = "animanga.index.build:main"
+search = "animanga.index.search:main"
+stats = "animanga.index.stats:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+    "ty>=0.0.84",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

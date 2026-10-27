@@ -1,0 +1,30 @@
+# Python / tools
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/
+
+# Crawled pages and crawl state: © of the sites, never committed (and never deleted)
+animanga/data/
+**/data/
+**/data_*/
+**/raw/
+**/cache/
+*.part
+*.lock
+!uv.lock
+
+# Local only: working docs, lecture texts, consultation notes, crawl problem logs, note pages
+local_docs/
+# Generated from docs/wiki/md by docs/wiki/md2dokuwiki.py
+docs/wiki/dokuwiki/
+
+# Local tool and editor settings
+CLAUDE.md
+.claude/
+.vscode/*
+!.vscode/settings.json
+
+# Submission ZIP (code + data), built locally
+dist/*.zip

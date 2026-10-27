@@ -1,0 +1,28 @@
+# Ruff settings for the animanga project (`uv run ruff format`, `uv run ruff check`).
+line-length = 100
+target-version = "py314"
+src = ["src", "tests"]
+
+[lint]
+select = [
+    "E", "W",  # pycodestyle
+    "F",       # pyflakes
+    "I",       # import order
+    "B",       # bugbear
+    "UP",      # pyupgrade
+    "SIM",     # simplify
+    "RUF",     # ruff's own rules
+    "PTH",     # pathlib instead of os.path
+    "TID",     # absolute imports only
+    "D",       # docstrings (NumPy style)
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["D"]  # test names say what they check
+
+[lint.pydocstyle]
+convention = "numpy"
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
