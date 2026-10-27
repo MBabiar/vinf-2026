@@ -278,7 +278,7 @@ vždy jednotlivo, crawler počkal a pokračoval.
 
 ## 8. Extrakcia URL z HTML
 
-[`animanga/src/animanga/crawler/sites/ann.py`](TODO-GitHub-odkaz) (MU rovnako v `sites/mangaupdates.py`):
+[`animanga/src/animanga/crawler/sites/ann.py`](https://github.com/MBabiar/vinf-2026/blob/main/animanga/src/animanga/crawler/sites/ann.py#L35) (MU rovnako v `sites/mangaupdates.py`):
 
 ```python
 # e.g. <a href="people.php?id=774">Shinichirō Watanabe</a>
@@ -322,7 +322,7 @@ Parser (`uv run parse`) číta uložené stránky (8 procesov, 3,5 min, 0 chýb)
 - **MU:** najprv preč všetky `<script>` (74 % bajtov), potom dvojice `data-cy="info-box-X-header"` (label) +
   `data-cy="info-box-X"` (hodnota). Regex iba na `data-cy`, nie na CSS triedy (majú hash buildu).
 
-[`animanga/src/animanga/parser/ann.py`](TODO-GitHub-odkaz), kredity (štáb a firmy):
+[`animanga/src/animanga/parser/ann.py`](https://github.com/MBabiar/vinf-2026/blob/main/animanga/src/animanga/parser/ann.py#L96), kredity (štáb a firmy):
 
 ```python
 _CREDITS = re.compile(
@@ -378,7 +378,7 @@ Výstup (riadky `credits` v `parsed/anime.jsonl`):
 
 `_SUMMARY` zahodí súhrn „7 episodes“ a v poznámke ostane presný zoznam epizód.
 
-[`animanga/src/animanga/parser/mangaupdates.py`](TODO-GitHub-odkaz), polia série:
+[`animanga/src/animanga/parser/mangaupdates.py`](https://github.com/MBabiar/vinf-2026/blob/main/animanga/src/animanga/parser/mangaupdates.py#L60), polia série:
 
 ```python
 _PAIR = re.compile(
@@ -750,7 +750,9 @@ cez anime aj mangu.
 
 ## 14. Kód a ZIP
 
-GitHub: TODO-GitHub-odkaz. ZIP s kódom: TODO (bez stiahnutých stránok a dát, kvôli autorským právam).
+GitHub: [https://github.com/MBabiar/vinf-2026](https://github.com/MBabiar/vinf-2026) (návod na spustenie v `README.md`). ZIP s kódom a spracovanými dátami (výstup parsera,
+dokumenty, index; bez stiahnutých HTML stránok): `vinf-odovzdanie-1.zip` (351 MB). Rovnaké dáta sú v repe ako
+archív 7z v `dist/`, rozbalí ich `7z x ../dist/animanga-data.7z.001 -o.` v priečinku `animanga/`.
 
 ```text
 uv run crawl [ann] [mangaupdates]   # crawler na pozadí
@@ -763,7 +765,7 @@ uv run stats                        # tabuľka štatistík
 
 ## Bonus: unit testy
 
-`uv run pytest` (82 testov, 2,6 s). [`tests/test_parser_pages.py`](TODO-GitHub-odkaz) overí regexy na **20 celých
+`uv run pytest` (83 testov, 2,6 s). [`tests/test_parser_pages.py`](https://github.com/MBabiar/vinf-2026/blob/main/animanga/tests/test_parser_pages.py) overí regexy na **20 celých
 stránkach**: 10 ANN (Cowboy Bebop, Claymore, Berserk, Fruits Basket, Hunter × Hunter 2011, Baby Blue; mangy Claymore,
 Cowboy Bebop, Fruits Basket a manhwa Priest) a 10 MU (Fruits Basket, Berserk, Mushishi, Kiseijuu, Claymore, Priest,
 Ookami to Koushinryou (Novel), Solo Leveling, doujinshi a nová séria z katalógu): názov, typ, rok, žánre, počet epizód

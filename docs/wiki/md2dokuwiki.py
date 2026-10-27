@@ -13,6 +13,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 WIKI_PAGE = re.compile(r"^https://vi2026\.ui\.sav\.sk/doku\.php\?id=([^&#\s]+)$")
 LINK = re.compile(r"\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)")  # URL may hold (manga)
+CODE_LINK = re.compile(r"\[`([^`]+)`\]\(([^()\s]+)\)")  # [`file.py`](url)
 LIST_ITEM = re.compile(r"^( *)(-|\d+\.) (.*)$")
 SEPARATOR = re.compile(r"^\|(\s*:?-+:?\s*\|)+\s*$")
 PNG_NAME = re.compile(r"^\s*%%\s*png:\s*([\w-]+)\s*$")
@@ -21,6 +22,7 @@ MEDIA = "user:mario.babiar"
 
 def inline(line: str) -> str:
     """Convert inline Markdown: `code` -> ''%%code%%'', [text](url) -> [[url|text]]; bold stays."""
+    line = CODE_LINK.sub(lambda m: f"[[{m.group(2)}|''%%{m.group(1)}%%'']]", line)
     parts = line.split("`")
     for i, part in enumerate(parts):
         if i % 2:
